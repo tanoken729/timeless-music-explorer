@@ -1,9 +1,14 @@
+import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from dotenv import load_dotenv
 
-# Spotify Developer Dashboardから取得したClient IDとClient Secretを設定
-client_id = '2960e30f794e493b9d05247ac1d70eea'
-client_secret = '0ca903025dd64482a5c8122c175d2675'
+# .env ファイルから環境変数を読み込む
+load_dotenv()
+
+# 環境変数からクライアントIDとクライアントシークレットを取得
+client_id = os.getenv('SPOTIFY_CLIENT_ID')
+client_secret = os.getenv('SPOTIFY_CLIENT_SECRET')
 
 # Spotipyを初期化
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
